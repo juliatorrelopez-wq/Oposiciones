@@ -242,3 +242,54 @@ mark.hl-amarillo{background:#fff07a}mark.hl-verde{background:#b5f0b0}mark.hl-ros
 .lt-txt small{display:block;opacity:.7;font-size:.8rem}
 .lt-logica li{margin:.25rem 0}
 .lt-truco{background:rgba(255,200,0,.15);border-radius:8px;padding:.5rem .8rem}
+/* ¿Por qué es así? */
+.porque{margin:.6rem 0 .2rem;background:#f3f0ff;border:1px solid #d9d0fb;border-left:4px solid #7a4fd6;border-radius:8px;padding:.45rem .8rem;font-size:.92rem}
+.porque summary{cursor:pointer;font-weight:700;color:#5b37b5}
+.porque p{margin:.35rem 0 .1rem}
+/* Repositorio de fallos */
+.subnav a .cnt{display:inline-block;min-width:1.2em;padding:0 .35em;margin-left:.25em;border-radius:9px;background:#c0392b;color:#fff;font-size:.75rem;text-align:center}
+.repo-acceso{margin-bottom:1rem;border-left:4px solid #c0392b}
+.repo .regla{background:#fff6e5;border:1px solid #f0d199;border-radius:8px;padding:.5rem .8rem}
+.repo-tabla{width:100%;border-collapse:collapse;font-size:.9rem}
+.repo-tabla th,.repo-tabla td{border-bottom:1px solid var(--borde);padding:.35rem .4rem;text-align:left;vertical-align:top}
+.repo-tabla td.num{text-align:center;white-space:nowrap}
+.btn.mini{padding:.2rem .5rem;font-size:.8rem}
+.repo details summary,.repo #repoDom summary{cursor:pointer}
+/* Pantalla de test: selector de confianza en chips grandes (táctil, lápiz y ratón) */
+.confs{margin-top:.9rem;display:flex;flex-direction:column;gap:.4rem}
+.confs .conf-tit{font-size:.9rem}
+.conf-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.conf{min-height:44px;padding:.5rem .7rem;border:2px solid var(--borde);border-radius:999px;background:#fff;color:var(--txt);font:inherit;font-weight:600;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;line-height:1.2;white-space:normal;text-align:center}
+.conf:hover{border-color:var(--prim)}
+.conf:focus-visible{outline:3px solid #9db8ff;outline-offset:2px}
+.conf.sel::before{content:"✓ "}
+.conf.c-s.sel{background:#e8f6ee;border-color:var(--ok);color:#0b5a2e}
+.conf.c-d.sel{background:#fff4d6;border-color:#d89a00;color:#6b4a00}
+.conf.c-c.sel{background:#fde6e6;border-color:var(--mal);color:#8a1c1c}
+.tipos-error{margin-top:.7rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.tipos-error .sub{width:100%}
+.terr{min-height:44px;padding:.45rem .8rem;border:1px solid var(--borde);border-radius:999px;background:#fff;font:inherit;font-size:.9rem;cursor:pointer;touch-action:manipulation}
+.terr.sel{background:var(--txt);color:#fff;border-color:var(--txt)}
+.op{min-height:44px;touch-action:manipulation;overflow-wrap:anywhere}
+.quiz-nav .btn{min-height:44px}
+.aviso-tarjeta{margin:.6rem 0 0;font-size:.85rem;color:#4b5563}
+.aviso-tarjeta::before{content:"🗂 "}
+.quiz,.quiz .pregunta{min-width:0;max-width:100%}
+.quiz .enunciado,.quiz .caso{overflow-wrap:anywhere}
+@media (pointer:coarse){.mapa .m{width:44px;height:44px;font-size:.85rem}}
+@media (max-width:420px){.conf-chips{grid-template-columns:1fr}}
+/* Por qué la correcta / Por qué no la que elegiste */
+.porque .pq-t{margin:.5rem 0 .1rem;font-size:.85rem;color:#5b37b5}
+.porque .pq-no{background:#fff5f5;border-left:3px solid #dc2626;padding:.3rem .5rem;border-radius:4px}
+/* Tarjetas automáticas: el dorso puede ser largo, así que la cara activa ocupa su altura real (sin giro 3D) */
+.tarjeta.auto{min-height:0;perspective:none}
+.tarjeta.auto .cara{position:relative;inset:auto;display:none;transform:none;text-align:left;align-items:stretch;justify-content:flex-start;flex-direction:column;font-size:1rem;min-height:200px;overflow-wrap:anywhere;transition:none}
+.tarjeta.auto .frente{display:flex}
+.tarjeta.auto.girada .frente{display:none}.tarjeta.auto.girada .dorso{display:flex;transform:none}
+.tarjeta.auto p{margin:.3rem 0}
+.tj-q{font-size:1.15rem;font-weight:600}.tj-ctx,.tj-inv,.tj-n{font-size:.85rem;color:#4b5563}
+.tj-lit{background:#fff;border:1px solid var(--borde);border-radius:6px;padding:.4rem .6rem;font-size:.9rem}
+.tj-no{background:#fff5f5;border-left:3px solid #dc2626;padding:.3rem .5rem;border-radius:4px}
+.tj-mn{background:#fff8e1;border-radius:6px;padding:.3rem .5rem}
+.mis-tarjetas .tj-item{border:1px solid var(--borde);border-radius:8px;padding:.5rem .8rem;margin:.5rem 0;background:#fff}
+.mis-tarjetas .tj-item summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:.5rem;overflow-wrap:anywhere}
