@@ -1,0 +1,16 @@
+/* Pantalla de acceso */
+#accSalir{display:none;margin-left:1rem;background:none;border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:6px;padding:.15rem .6rem;font:inherit;font-size:.85rem;cursor:pointer;opacity:.85}
+#accSalir:hover{opacity:1;border-color:#fff}
+body:not(.acc-dentro) .barra-sup nav a{display:none}
+body.acc-dentro #accSalir{display:inline-block}
+.acc{max-width:400px;margin:8vh auto 2rem;background:var(--card);border:1px solid var(--borde);border-top:6px solid var(--prim);border-radius:var(--rad);padding:1.6rem 1.6rem 1.3rem;box-shadow:0 10px 30px rgba(30,36,48,.08)}
+.acc h1{margin:0 0 .2rem;font-size:1.45rem}
+.acc .sub{margin:0 0 1.1rem}
+.acc label.acc-campo{font-weight:600;font-size:.9rem;margin:.2rem 0 .3rem}
+.acc input[type=password]{width:100%;padding:.6rem .7rem;font-size:1rem;border-radius:8px}
+.acc input[type=password]:focus{outline:2px solid var(--prim);outline-offset:1px;border-color:var(--prim)}
+.acc .acc-rec{display:flex;align-items:center;gap:.5rem;margin:.8rem 0 1rem;font-size:.92rem;color:var(--sub)}
+.acc .btn.prim{width:100%;padding:.7rem 1rem;font-size:1rem;font-weight:600}
+.acc-msg{min-height:1.4em;margin:.8rem 0 0;font-size:.9rem;color:var(--sub)}
+.acc-msg.mal{color:var(--mal);font-weight:600}
+.acc-cand{font-size:2rem;line-height:1;margin-bottom:.4rem}
