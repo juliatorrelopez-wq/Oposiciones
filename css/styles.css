@@ -293,3 +293,15 @@ mark.hl-amarillo{background:#fff07a}mark.hl-verde{background:#b5f0b0}mark.hl-ros
 .tj-mn{background:#fff8e1;border-radius:6px;padding:.3rem .5rem}
 .mis-tarjetas .tj-item{border:1px solid var(--borde);border-radius:8px;padding:.5rem .8rem;margin:.5rem 0;background:#fff}
 .mis-tarjetas .tj-item summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:.5rem;overflow-wrap:anywhere}
+/* Pasar progreso a otro dispositivo */
+.oculto-accesible{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+.pasar textarea,#pCod{width:100%;box-sizing:border-box;font:.85rem/1.3 ui-monospace,monospace;padding:.5rem;border:1px solid var(--borde);border-radius:8px;word-break:break-all;resize:vertical}
+.pasar .btn,.ajustes .acciones .btn{min-height:44px;touch-action:manipulation}
+.pasar .chk{display:flex;gap:.5rem;align-items:center;min-height:44px}
+.pasos-pasar{margin:.3rem 0 .6rem 1.2rem;padding:0}
+.qr-caja{margin-top:.6rem}
+.qr-img{max-width:340px;width:100%;background:#fff}
+.qr-img svg{width:100%;height:auto;display:block}
+.qr-nav{align-items:center}
+.sub.mal,p.mal{color:var(--mal)}
+.sub.ok{color:var(--ok,#1a7f37)}

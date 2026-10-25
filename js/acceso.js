@@ -1,5 +1,6 @@
 /* Acceso con contraseña. El contenido viaja cifrado (AES-256-GCM, clave PBKDF2-SHA256) en contenido.enc.js.
-   "Recordarme" guarda la clave derivada (nunca la contraseña) en localStorage. */
+   "Recordarme" guarda la clave derivada (nunca la contraseña) en localStorage.
+   Si falta DecompressionStream (iOS anterior a 16.4) se avisa de actualizar. */
 (function () {
   'use strict';
   var CLAVE_LS = 'opos-acceso-clave-v1';
@@ -44,6 +45,7 @@
 
   function entrar(clave, recordar) {
     return descifrar(clave).then(function (texto) {
+      window.OPOS_CLAVE_ACCESO = clave; // clave derivada (no la contraseña): la usa "Pasar progreso" para cifrar el código
       if (recordar) return crypto.subtle.exportKey('raw', clave).then(function (raw) {
         try { localStorage.setItem(CLAVE_LS, JSON.stringify({ salt: C.salt, k: a64(raw) })); } catch (e) {}
         return texto;
@@ -80,7 +82,7 @@
   });
 
   if (!soporte()) {
-    msg('Este navegador no permite abrir el contenido cifrado. Usa una versión reciente de Chrome, Edge, Firefox o Safari.', true);
+    msg('Este navegador no permite abrir el contenido cifrado. Usa una versión reciente de Chrome, Edge, Firefox o Safari (en iPhone, iOS 16.4 o posterior).', true);
     ocupado(true); return;
   }
   $('#accForm').addEventListener('submit', enviar);
