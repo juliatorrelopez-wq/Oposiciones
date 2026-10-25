@@ -305,3 +305,46 @@ mark.hl-amarillo{background:#fff07a}mark.hl-verde{background:#b5f0b0}mark.hl-ros
 .qr-nav{align-items:center}
 .sub.mal,p.mal{color:var(--mal)}
 .sub.ok{color:var(--ok,#1a7f37)}
+/* Notas: pestaña fija y panel */
+.nt-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:40;width:34px;min-height:96px;padding:.4rem 0;border:1px solid #c9a227;border-right:0;border-radius:10px 0 0 10px;background:#ffe9a8;color:#5a4500;font-family:inherit;font-weight:600;font-size:.85rem;line-height:1;cursor:pointer;box-shadow:-2px 2px 8px rgba(0,0,0,.15);touch-action:manipulation}
+.nt-tab span{writing-mode:vertical-rl;transform:rotate(180deg);display:inline-block}
+.nt-tab:hover{background:#ffdf80}
+.nt-panel{position:fixed;top:0;right:0;bottom:0;width:var(--nt-ancho,420px);max-width:90vw;z-index:45;background:#fffdf5;border-left:1px solid var(--borde);box-shadow:-6px 0 20px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.nt-panel[hidden]{display:none}
+.nt-abiertas .nt-tab{right:min(var(--nt-ancho,420px),90vw)}
+.nt-cab{display:flex;align-items:center;gap:.5rem;padding:.5rem .6rem .5rem 1rem;border-bottom:1px solid var(--borde);position:relative}
+.nt-cab h2{margin:0;font-size:1.1rem;flex:1}
+.nt-cab .nt-volver{flex:0 0 auto;min-height:44px}.nt-cab .nt-volver+.nt-x{margin-left:auto}
+.nt-x{margin-left:auto;width:44px;height:44px;border:0;background:none;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--txt)}
+.nt-asa{position:absolute;left:-5px;top:0;bottom:0;width:12px;cursor:ew-resize;touch-action:none;z-index:1}
+.nt-cuerpo{flex:1;overflow:auto;padding:.7rem 1rem 1rem;display:flex;flex-direction:column;gap:.6rem;-webkit-overflow-scrolling:touch}
+.nt-filtros,.nt-modos{display:flex;flex-wrap:wrap;gap:.4rem}
+.nt-panel .chip{min-height:40px;padding:.3rem .8rem;border:1px solid var(--borde);border-radius:99px;background:#fff;font:inherit;font-size:.9rem;cursor:pointer;color:var(--txt)}
+.nt-panel .chip.sel{background:var(--prim);border-color:var(--prim);color:#fff}
+.nt-nueva{min-height:44px}
+.nt-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem}
+.nt-item{width:100%;text-align:left;display:flex;flex-direction:column;gap:.15rem;padding:.6rem .7rem;min-height:44px;border:1px solid var(--borde);border-radius:8px;background:#fff;font:inherit;color:var(--txt);cursor:pointer}
+.nt-res{font-size:.85rem;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nt-titulo{font-family:inherit;font-weight:600;font-size:16px;padding:.5rem;border:1px solid var(--borde);border-radius:8px;width:100%;box-sizing:border-box}
+.nt-meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.nt-panel .enlace{background:none;border:0;padding:.5rem .2rem;min-height:36px;color:var(--prim);text-decoration:underline;font:inherit;font-size:.85rem;cursor:pointer}
+.nt-panel .enlace.peligro{color:var(--mal)}
+.nt-texto{flex:1;min-height:45vh;width:100%;box-sizing:border-box;font-family:inherit;font-size:16px;line-height:1.45;padding:.6rem;border:1px solid var(--borde);border-radius:8px;resize:vertical;background:#fff}
+.nt-herr{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.nt-herr .btn{min-height:40px;padding:.35rem .6rem;font-size:.85rem}
+.nt-herr select{min-height:40px;font:inherit;font-size:.9rem;border:1px solid var(--borde);border-radius:8px;background:#fff}
+.nt-color{width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--borde);cursor:pointer}
+.nt-color.sel{box-shadow:0 0 0 3px var(--prim)}
+.nt-solo{display:flex;gap:.3rem;align-items:center;font-size:.85rem;min-height:40px}
+.nt-hoja{border:1px solid var(--borde);border-radius:8px;background:#fff;overflow:hidden}
+.nt-lienzo{display:block;touch-action:none;cursor:crosshair}
+.nt-lienzo.mover{touch-action:auto;cursor:grab}
+.nt-estado{margin:0;font-size:.8rem;color:var(--sub);min-height:1em}.nt-estado.mal{color:var(--mal);font-weight:600}
+@media (max-width:640px){
+ .nt-tab{width:30px;min-height:88px;font-size:.8rem}
+ .nt-panel{left:40px;width:auto;max-width:none;border-radius:12px 0 0 12px}
+ .nt-abiertas .nt-tab{right:auto;left:6px}
+ .nt-abiertas{overflow:hidden}
+ .nt-asa{display:none}
+}
+@media print{.nt-tab,.nt-panel{display:none!important}}
