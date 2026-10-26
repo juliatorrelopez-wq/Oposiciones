@@ -368,3 +368,13 @@ mark.hl-amarillo{background:#fff07a}mark.hl-verde{background:#b5f0b0}mark.hl-ros
 .vh-campo{display:block;font-weight:600;font-size:.9rem;margin:.6rem 0}
 .vh-campo input{display:block;width:100%;margin-top:.25rem;padding:.55rem .65rem;font-size:1rem;border:1px solid var(--borde);border-radius:8px;font-weight:400}
 #vhCard .chk{display:flex;gap:.5rem;align-items:center;min-height:44px}
+/* Estado de sincronización (solo con la nube activada) */
+.nube-estado,.barra-sup nav a.nube-estado{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 10px;border-radius:999px;background:#eef2f7;color:#334;text-decoration:none;white-space:nowrap;opacity:1;margin-left:0;margin-right:.4rem}
+.nube-estado[hidden]{display:none}
+.nube-punto{width:9px;height:9px;border-radius:50%;background:#999;flex:none}
+.nube-sincronizado .nube-punto{background:#2e9d5b}
+.nube-sincronizando .nube-punto{background:#e0a100;animation:nubeLatido 1s ease-in-out infinite}
+.nube-sin-conexion .nube-punto{background:#8a8f98}
+.nube-error .nube-punto{background:#c62828}
+@keyframes nubeLatido{50%{opacity:.35}}
+@media (max-width:600px){.nube-estado .nube-txt{display:none}.nube-estado{padding:6px}}

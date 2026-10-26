@@ -81,6 +81,38 @@
     if (ev.target && ev.target.id === 'accSalir') { ev.preventDefault(); salir(); }
   });
 
+  /* Versión nueva: GitHub Pages guarda index.html hasta 10 minutos en caché. Se pide version.json sin caché y, si
+     el id no coincide con el de esta página, se recarga una sola vez con ?b=<id> (otra URL, así no sale de caché).
+     Con la app ya abierta se comprueba al volver a la pestaña y se ofrece actualizar, sin recargar a la fuerza. */
+  var BUILD = (document.querySelector('meta[name="opos-build"]') || {}).content || '';
+  function versionRemota() {
+    if (!/^https?:$/.test(location.protocol)) return Promise.resolve(null);
+    return fetch('version.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { return j && j.build; }, function () { return null; });
+  }
+  function limpiarUrl() {
+    if (/[?&]b=/.test(location.search)) { try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {} }
+  }
+  function recargarA(b) {
+    var k = 'opos-recarga-' + b;
+    try { if (sessionStorage.getItem(k)) return false; sessionStorage.setItem(k, '1'); } catch (e) { return false; }
+    location.replace(location.pathname + '?b=' + encodeURIComponent(b) + location.hash); return true;
+  }
+  window.OPOS_BUILD = BUILD;
+  window.OPOS_VERSION_LISTA = versionRemota().then(function (b) {
+    if (b && BUILD && b !== BUILD && !window.ACCESO_LISTO && recargarA(b)) return 'recargando';
+    limpiarUrl(); return b;
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible' || !window.ACCESO_LISTO) return;
+    versionRemota().then(function (b) {
+      if (!b || !BUILD || b === BUILD || document.getElementById('accNueva')) return;
+      var d = document.createElement('div'); d.id = 'accNueva'; d.className = 'acc-nueva'; d.setAttribute('role', 'status');
+      d.innerHTML = 'Hay una versión nueva de la app. <button type="button" class="btn prim" id="accActualizar">Actualizar</button>';
+      document.body.appendChild(d);
+      document.getElementById('accActualizar').onclick = function () { try { sessionStorage.setItem('opos-recarga-' + b, '1'); } catch (e) {} location.replace(location.pathname + '?b=' + encodeURIComponent(b) + location.hash); };
+    });
+  });
+
   if (!soporte()) {
     msg('Este navegador no permite abrir el contenido cifrado. Usa una versión reciente de Chrome, Edge, Firefox o Safari (en iPhone, iOS 16.4 o posterior).', true);
     ocupado(true); return;
@@ -92,7 +124,8 @@
   if (guardada && guardada.k && guardada.salt === C.salt) {
     window.ACCESO_T0 = performance.now();
     ocupado(true); msg('Abriendo con la sesión guardada…');
-    importar(guardada.k).then(function (clave) { return entrar(clave, false); }).catch(function () {
+    Promise.race([window.OPOS_VERSION_LISTA, new Promise(function (r) { setTimeout(r, 2500); })]).then(function (v) { if (v === 'recargando') throw 'recargando'; return importar(guardada.k); }).then(function (clave) { return entrar(clave, false); }).catch(function (e) {
+      if (e === 'recargando') return;
       try { localStorage.removeItem(CLAVE_LS); } catch (e) {}
       ocupado(false); msg('La sesión guardada ya no es válida. Escribe la contraseña.', true);
     });
