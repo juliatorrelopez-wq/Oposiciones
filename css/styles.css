@@ -378,3 +378,35 @@ mark.hl-amarillo{background:#fff07a}mark.hl-verde{background:#b5f0b0}mark.hl-ros
 .nube-error .nube-punto{background:#c62828}
 @keyframes nubeLatido{50%{opacity:.35}}
 @media (max-width:600px){.nube-estado .nube-txt{display:none}.nube-estado{padding:6px}}
+/* Esquema en árbol (temas claros). Siempre desplegado: el lápiz guarda trazos relativos al tamaño del contenedor. */
+.arbol-caja{margin:0 0 1.2rem}.arbol-caja>h3{margin:.2rem 0 .5rem}
+.arbol{--lc:#9aa3b2;background:var(--card);border:1px solid var(--borde);border-radius:var(--rad);padding:.9rem;font-size:.92rem;line-height:1.35}
+.ar-raiz{display:table;margin:0 auto;background:#1e2430;color:#fff;padding:.45rem 1rem;border-radius:10px;font-weight:700;text-align:center;max-width:100%}
+.ar-raiz .tk{color:inherit;background:rgba(255,255,255,.18)}
+.ar-ramas{list-style:none;margin:0;padding:1.1rem 0 0;display:grid;grid-template-columns:repeat(var(--nc,4),minmax(0,1fr));gap:.9rem;position:relative}
+.ar-ramas::before{content:"";position:absolute;left:50%;top:0;height:.55rem;border-left:2px solid var(--lc)}
+.ar-ramas::after{content:"";position:absolute;left:calc(50% / var(--nc,4));right:calc(50% / var(--nc,4));top:.55rem;border-top:2px solid var(--lc)}
+.ar-rama{position:relative;border:1px solid var(--borde);border-top:4px solid var(--rc);border-radius:8px;padding:.45rem .6rem .5rem;background:#fbfcfe}
+.ar-rama::before{content:"";position:absolute;left:50%;top:-1.05rem;height:.55rem;border-left:2px solid var(--lc)}
+.ar-rama.ar-f2::before{display:none}
+@media (min-width:641px) and (max-width:900px){.ar-ramas{grid-template-columns:repeat(2,minmax(0,1fr))}.ar-ramas::after,.ar-rama::before{display:none}}
+.ar-n1{font-weight:700;color:var(--rc);margin-bottom:.15rem}
+.ar-rama ul{list-style:none;margin:.15rem 0 0;padding:0 0 0 .2rem}
+.ar-rama ul ul{padding-left:.9rem}
+.ar-rama li{position:relative;padding:.12rem 0 .12rem .95rem}
+.ar-rama li::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--rc);opacity:.55}
+.ar-rama li:last-child::before{bottom:auto;height:.85em}
+.ar-rama li::after{content:"";position:absolute;left:0;top:.85em;width:.7rem;border-top:2px solid var(--rc);opacity:.55}
+.ar-t.ar-g{font-weight:600}
+@media (max-width:640px){
+  .arbol{padding:.6rem;font-size:.95rem}
+  .ar-ramas{grid-template-columns:1fr;padding:.6rem 0 0 1rem;gap:.6rem}
+  .ar-ramas::before{left:.35rem;top:0;bottom:1rem;height:auto}
+  .ar-ramas::after{display:none}
+  .ar-rama::before,.ar-rama.ar-f2::before{display:block;left:-.65rem;top:.9rem;height:0;width:.65rem;border-left:0;border-top:2px solid var(--lc)}
+}
+/* Tablas de jerarquía (temas claros): desplazables en móvil */
+.contenido .tabla-jerarquia{font-size:.9rem}
+@media (max-width:640px){.contenido .tabla-jerarquia{display:block;overflow-x:auto;width:auto}}
+.contenido .tabla-jerarquia th,.contenido .tabla-jerarquia td{border:1px solid var(--borde);padding:.3rem .45rem;vertical-align:top;text-align:left}
+.contenido .tabla-jerarquia th{background:#eef2ff}
