@@ -1,11 +1,11 @@
 {
- "build": "aa8ca32e98a3",
- "videos": "24e2dd52b8ce",
+ "build": "4d7e356f33f5",
+ "videos": "62da2fb12cac",
  "archivos": {
   "contenido.enc.js": "2d23015b23c7",
   "js/acceso.js": "5aa3860a4858",
   "css/styles.css": "a0ec451af10f",
   "css/acceso.css": "0c68381a48dd"
  },
- "generado": "2026-10-28T09:53:18.320Z"
+ "generado": "2026-10-29T10:41:36.307Z"
 }
